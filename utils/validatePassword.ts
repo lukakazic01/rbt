@@ -1,4 +1,5 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {PasswordFormError} from "../types/passwordFormError";
 
 export function validatePassword(
   specialCharsRegex: RegExp,
@@ -7,7 +8,7 @@ export function validatePassword(
   oneDigitRegex: RegExp,
   maxOfTwoRepeatedCharsInSequnceRegex: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    let validationErrors: Record<string, Record<string, string>> = {};
+    let validationErrors: Record<string, PasswordFormError> = {};
     const trimmedControl = control.value.trim();
     const isEnoughSpecialChars = specialCharsRegex.test(trimmedControl);
     const isThereOneUppercaseLetter = oneUppercaseRegex.test(trimmedControl);
