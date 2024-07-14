@@ -1,8 +1,12 @@
 export interface PasswordFormError {
-  maxCharsInSequence?: string,
-  oneDigit?: string,
-  oneUppercaseLetter?: string,
-  notEnoughSpecialChars? :string,
-  oneLowerCaseLetter?: string,
-  length?: string
+  maxCharsInSequence?: ControlValue,
+  oneDigit?: ControlValue,
+  oneUppercaseLetter?: ControlValue,
+  notEnoughSpecialChars? :ControlValue,
+  oneLowerCaseLetter?: ControlValue,
+  length?: ControlValue
+}
+
+interface ControlValue {
+  value: string
 }

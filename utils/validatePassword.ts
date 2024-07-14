@@ -8,7 +8,7 @@ export function validatePassword(
   oneDigitRegex: RegExp,
   maxOfTwoRepeatedCharsInSequnceRegex: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    let validationErrors: Record<string, PasswordFormError> = {};
+    let validationErrors: PasswordFormError = {};
     const trimmedControl = control.value.trim();
     const isEnoughSpecialChars = specialCharsRegex.test(trimmedControl);
     const isThereOneUppercaseLetter = oneUppercaseRegex.test(trimmedControl);
