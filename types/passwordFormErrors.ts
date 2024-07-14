@@ -1,4 +1,4 @@
-export interface PasswordFormError {
+export interface PasswordFormErrors {
   maxCharsInSequence?: ControlValue,
   oneDigit?: ControlValue,
   oneUppercaseLetter?: ControlValue,
