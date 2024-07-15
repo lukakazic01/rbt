@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {validatePassword} from "../../../utils/validatePassword";
 import {
