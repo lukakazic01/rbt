@@ -1,3 +1,5 @@
+@import "variables";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,14 +22,117 @@
       column-gap: 50px;
       flex-grow: 1;
 
-      >:nth-child(2) {
-        flex-basis: 550px;
-        height: 100%;
-      }
       >:nth-child(1) {
         flex-basis: 300px;
         height: 100%;
+        font-family: 'Times New Roman';
+        background-color: $gold3;
+        padding: 10px;
+        color: $black;
+
+        .title {
+          text-align: center;
+          color: $white;
+          font-weight: bold;
+        }
+        .about-spices {
+          font-size: $text-sm;
+          font-weight: 500;
+          color: $black;
+          margin-top: 10px;
+        }
+
+        .link {
+          text-align: center;
+          font-size: $text-sm;
+          margin-top: 10px;
+          a {
+            color: $white;
+            text-decoration: underline;
+            &:hover {
+              color: $black;
+              cursor: pointer;
+            }
+          }
+        }
+
+        .spices {
+          list-style-position: inside;
+          list-style-type: square;
+          padding-left: 20px;
+          margin: 10px 0;
+
+          li {
+            font-weight: 500;
+          }
+        }
+
+        .about-spices-continuation {
+          font-size: $text-sm;
+          font-weight: 500;
+        }
+      }
+
+      >:nth-child(2) {
+        flex-basis: 550px;
+        height: 100%;
+        font-family: 'Arial';
+
+        .image-container {
+          height: 50%;
+          display: flex;
+          align-items: end;
+          justify-content: end;
+        }
+
+        .table-container {
+          height: 50%;
+          background-color: $gold4;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .table-title {
+            font-weight: 500;
+          }
+
+          table {
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+            margin-top: 10px;
+            th {
+              font-weight: 400;
+            }
+            th, td {
+              border: 1px solid black;
+            }
+          }
+
+          .source-of-information {
+            font-size: $text-sm;
+            margin: 10px 0;
+
+            a {
+              color: $gold3;
+              &:hover {
+                color: $black;
+              }
+            }
+          }
+
+          .data-years {
+            font-size: $text-sm;
+          }
+        }
       }
     }
   }
+}
+
+.nested-ul {
+  margin: 5px 0;
+  padding-left: 40px;
+  list-style-position: inside;
 }

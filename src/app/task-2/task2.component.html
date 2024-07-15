@@ -2,8 +2,64 @@
     <div class="container">
         <div style="background-image: url('spices.png'); height: 170px"></div>
         <div id="zacini-container">
-          <div>a</div>
-          <div>b</div>
+          <div>
+            <h2 class="title">Začini</h2>
+            <p class="about-spices">
+               Zanimljivo je na koji način su začini uticali na
+               tokove civilizacija. Korišćeni su u narodnoj
+               medicini, ishrani, proizvodnji parfema... Danas su
+               su u upotrebi mnogobrojni začini, a samo neki od njih
+               su:
+            </p>
+            <ul class="spices">
+              <li>biber</li>
+                <ul class="nested-ul">
+                  <li>beli</li>
+                  <li>crni</li>
+                  <li>zeleni</li>
+                </ul>
+              <li>šafran</li>
+              <li>kurkuma</li>
+              <li>kardamon</li>
+            </ul>
+            <p class="about-spices-continuation">
+               Prvi začini kojima se trgovalo su <i><b>biber</b></i> i <i><b>cimet</b></i>, a
+               vreme za koje se podatak vezuje je čak 2000
+               godine pre nove ere.</p>
+            <p class="link" (click)="scrollToTable()">
+              <a fragment="table">skok na tabelu sa podacima o proizvodnji</a>
+            </p>
+          </div>
+          <div>
+            <div class="image-container">
+              <img src="safran.png" />
+            </div>
+            <div class="table-container">
+              <p class="table-title">Prozvodnja začina po zemljama <sup>*</sup></p>
+              <table id="table" #table>
+                <thead>
+                  <tr>
+                    <th>Indija</th>
+                    <th>Bangladeš</th>
+                    <th>Turska</th>
+                    <th>Kina</th>
+                    <th>Pakistan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>70%</td>
+                    <td>9%</td>
+                    <td>5.7%</td>
+                    <td>5.5%</td>
+                    <td>3%</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="source-of-information">Izvor informacija: <a href="https://www.wikipedia.org/">Wikipedia</a></p>
+              <p class="data-years"><sup>*</sup> -- podaci se odnose na period 2009.-2010. godina</p>
+            </div>
+          </div>
         </div>
     </div>
 </div>
