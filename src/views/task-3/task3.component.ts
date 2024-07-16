@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, DestroyRef, inject, OnDestroy, OnInit} from "@angular/core";
 import {Task3Service} from "./task3.service";
 import {CommonModule} from "@angular/common";
 import {Movie} from "../../types/movie";
@@ -18,13 +18,13 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 export class Task3Component implements OnInit{
 
-  constructor(private task3Service: Task3Service) {
-  }
+  constructor(private task3Service: Task3Service) {}
 
   allMovies: Movie[] | null = null
+  destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.task3Service.getAllMovies().pipe(takeUntilDestroyed()).subscribe({
+    this.task3Service.getAllMovies().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => this.allMovies = res,
     })
   }

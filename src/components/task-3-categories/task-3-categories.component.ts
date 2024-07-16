@@ -1,8 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, DestroyRef, inject} from "@angular/core";
 import {Task3CategoriesService} from "./task-3-categories.service";
 import {Category} from "../../types/category";
 import {CommonModule} from "@angular/common";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 
 @Component({
@@ -13,20 +12,13 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   imports: [CommonModule]
 })
 
-export class Task3CategoriesComponent implements OnInit{
+export class Task3CategoriesComponent {
 
-  constructor(private task3CategoriesService: Task3CategoriesService) {
-  }
+  constructor(private task3CategoriesService: Task3CategoriesService) {}
 
-  categories: Category[] | null = null
+  $categories = this.task3CategoriesService.getAllCategories()
 
   trackByCategory(index: number, category: Category) {
     return category.id
-  }
-
-  ngOnInit() {
-    this.task3CategoriesService.getAllCategories().pipe(takeUntilDestroyed()).subscribe({
-      next: (res) => this.categories = res,
-    })
   }
 }
