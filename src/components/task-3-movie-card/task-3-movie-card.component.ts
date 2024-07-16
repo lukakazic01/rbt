@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
 import {Movie} from "../../types/movie";
 import {RouterLink} from "@angular/router";
 
@@ -10,6 +10,7 @@ import {RouterLink} from "@angular/router";
   imports: [
     RouterLink
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-task-3-movie-card'
 })
 

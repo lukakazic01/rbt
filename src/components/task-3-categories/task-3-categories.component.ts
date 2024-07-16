@@ -1,4 +1,4 @@
-import {Component, DestroyRef, EventEmitter, inject, Output} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from "@angular/core";
 import {Task3CategoriesService} from "./task-3-categories.service";
 import {Category} from "../../types/category";
 import {CommonModule} from "@angular/common";
@@ -10,7 +10,8 @@ import {FormsModule} from "@angular/forms";
   templateUrl: 'task-3-categories.component.html',
   styleUrl: 'task-3-categories.component.scss',
   selector: 'app-task-3-categories',
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class Task3CategoriesComponent {
