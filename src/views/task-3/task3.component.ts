@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, OnDestroy, OnInit} from "@angular/core";
+import {Component, computed, DestroyRef, inject, OnDestroy, OnInit, signal} from "@angular/core";
 import {Task3Service} from "./task3.service";
 import {CommonModule} from "@angular/common";
 import {Movie} from "../../types/movie";
@@ -22,11 +22,29 @@ export class Task3Component implements OnInit{
 
   allMovies: Movie[] | null = null
   destroyRef = inject(DestroyRef);
+  filteredMovies = signal<Movie[] | null>(null) ;
 
   ngOnInit() {
     this.task3Service.getAllMovies().pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: (res) => this.allMovies = res,
+      next: (res) => {
+        this.allMovies = res
+        this.filteredMovies.set(this.allMovies)
+      },
     })
+  }
+
+  handleMovieUpdate(categoryId: number) {
+    this.filteredMovies.update((movies) => {
+      if(this.allMovies) {
+        return this.allMovies.filter((movie) => movie.categoryId === categoryId)
+      } else {
+        return movies
+      }
+    });
+  }
+
+  handleFilterResetting() {
+    this.filteredMovies.update(() => this.allMovies)
   }
 
   trackByMovie(index: number, movie: Movie) {

@@ -1,5 +1,7 @@
-<select *ngIf="$categories | async as categories">
+<select *ngIf="$categories | async as categories" [(ngModel)]="category" (change)="handleCategoryChange()" >
+  <option disabled selected>Select Category</option>
   <ng-container *ngFor="let option of categories; trackBy: trackByCategory">
     <option [value]="option.id">{{option.name}}</option>
   </ng-container>
 </select>
+<button (click)="handleFilterResetting()">Reset filter</button>
