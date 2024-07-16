@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.card {
+  border: 1px solid #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .card-body {
+    padding: 20px;
+
+    .movie-name {
+      margin-bottom: 10px;
+    }
+  }
+}

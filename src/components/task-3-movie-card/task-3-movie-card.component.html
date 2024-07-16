@@ -1,0 +1,9 @@
+<a [routerLink]="movie?.id">
+  <div class="card">
+    <img [src]="movie?.imageUrl" />
+    <div class="card-body">
+      <p class="movie-name"><b>Name:</b> {{movie?.name}}</p>
+      <p class="movie-title"><b>Title:</b> {{movie?.description}}</p>
+    </div>
+  </div>
+</a>

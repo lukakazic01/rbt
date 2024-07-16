@@ -1,0 +1,5 @@
+<select>
+  <ng-container *ngFor="let option of categories; trackBy: trackByCategory">
+    <option [value]="option.id">{{option.name}}</option>
+  </ng-container>
+</select>

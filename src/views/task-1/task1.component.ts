@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import {validatePassword} from "../../../utils/validatePassword";
+import {validatePassword} from "../../utils/validatePassword";
 import {
   REGEX_FOR_AT_LEAST_1_DIGIT,
   REGEX_FOR_AT_LEAST_1_LOWERCASE_LETTER,
