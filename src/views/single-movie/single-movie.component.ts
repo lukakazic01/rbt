@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, Input, OnInit, signal} from "@angular/core";
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal} from "@angular/core";
 import {SingleMovieService} from "./single-movie.service";
 import {ActivatedRoute} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
@@ -14,7 +14,8 @@ import {Video} from "../../types/video";
   templateUrl: 'single-movie.component.html',
   styleUrl: 'single-movie.component.scss',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class SingleMovieComponent implements OnInit{
