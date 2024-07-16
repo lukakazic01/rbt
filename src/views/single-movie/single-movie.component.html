@@ -1,1 +1,10 @@
-<p>Movie</p>
+<div *ngIf="singleMovie()">
+  <img [src]="singleMovie()?.imageUrl" />
+  <p>{{singleMovie()?.name}}</p>
+  <p>{{singleMovie()?.description}}</p>
+  <h1>Comments:</h1>
+  <ng-container *ngFor="let comment of singleMovie()?.comments">
+    <p>{{comment.comment || comment.Comment}}</p>
+  </ng-container>
+  <iframe [src]="safeUrl"></iframe>
+</div>

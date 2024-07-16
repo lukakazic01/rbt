@@ -1,4 +1,4 @@
-<a [routerLink]="movie?.id">
+<a [routerLink]="movie?.id" [queryParams]="{ imdbId: movie?.imdbId}">
   <div class="card">
     <img [src]="movie?.imageUrl" />
     <div class="card-body">

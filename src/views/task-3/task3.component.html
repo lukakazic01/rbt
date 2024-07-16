@@ -1,6 +1,6 @@
 <div class="blog-wrapper">
   <h1 class="main-title">Movies</h1>
-  <div *ngIf="this.filteredMovies()">
+  <div *ngIf="filteredMovies()">
     <app-task-3-categories (updateMovies)="handleMovieUpdate($event)" (resetFilters)="handleFilterResetting()" />
     <div class="all-movies" >
       <ng-container *ngFor="let movie of filteredMovies(); trackBy: trackByMovie">
