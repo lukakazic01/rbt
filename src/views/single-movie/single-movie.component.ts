@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal} from "@angular/core";
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, SecurityContext, signal} from "@angular/core";
 import {SingleMovieService} from "./single-movie.service";
 import {ActivatedRoute} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {Movie, MovieComment, MovieWithCommentsAndVideoId} from "../../types/movie";
 import {CommonModule} from "@angular/common";
 import {forkJoin, map} from "rxjs";
-import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
 import {Video} from "../../types/video";
 
 
@@ -46,7 +46,8 @@ export class SingleMovieComponent implements OnInit{
       ).subscribe({
       next: (res) => {
         this.singleMovie.set(res)
-        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${res.videoId}`);
+          const sanitizedUrl = this.sanitizer.sanitize(SecurityContext.URL, `https://www.youtube.com/embed/${res.videoId}`);
+          if(sanitizedUrl) this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(sanitizedUrl)
       },
     });
   }
