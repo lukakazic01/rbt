@@ -15,12 +15,12 @@ export function validatePassword(
     const isThereOneLowercaseLetter = oneLowercaseRegex.test(trimmedControl);
     const isThereOneDigit = oneDigitRegex.test(trimmedControl);
     const isLessThenTwoRepeatedCharactersInSequence = maxOfTwoRepeatedCharsInSequnceRegex.test(trimmedControl);
-    if(!isLessThenTwoRepeatedCharactersInSequence) validationErrors = {...validationErrors, maxCharsInSequence: {value: trimmedControl}}
-    if(!isThereOneDigit) validationErrors = {...validationErrors, oneDigit: {value: trimmedControl}}
-    if(!isThereOneUppercaseLetter) validationErrors = {...validationErrors, oneUppercaseLetter: {value: trimmedControl}}
-    if(!isEnoughSpecialChars) validationErrors = {...validationErrors, notEnoughSpecialChars: {value: trimmedControl}};
-    if(!isThereOneLowercaseLetter) validationErrors = {...validationErrors, oneLowerCaseLetter: {value: trimmedControl}}
-    if(trimmedControl.length < 6 || trimmedControl.length > 24) validationErrors = {...validationErrors, length: {value: trimmedControl}}
+    if(!isLessThenTwoRepeatedCharactersInSequence) validationErrors = {...validationErrors, maxCharsInSequence: {message: 'Only 2 same characters in sequence allowed'}}
+    if(!isThereOneDigit) validationErrors = {...validationErrors, oneDigit: {message: 'You must have at least one digit'}}
+    if(!isThereOneUppercaseLetter) validationErrors = {...validationErrors, oneUppercaseLetter: {message: 'You must have at least one uppercase letter'}}
+    if(!isEnoughSpecialChars) validationErrors = {...validationErrors, notEnoughSpecialChars: {message: 'You must have at least 2 special characters'}};
+    if(!isThereOneLowercaseLetter) validationErrors = {...validationErrors, oneLowerCaseLetter: {message: 'You must have at least one lowercase letter'}}
+    if(trimmedControl.length < 6 || trimmedControl.length > 24) validationErrors = {...validationErrors, length: {message: 'Password must be between 6 and 24 characters'}}
     return validationErrors;
   };
 }

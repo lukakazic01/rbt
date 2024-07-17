@@ -1,0 +1,48 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+    input {
+      padding: 10px;
+      border: 0;
+      outline: 0;
+      border: 1px solid #D2D2D2;
+      border-radius: 4px;
+      margin-top: 10px;
+
+      &.error {
+        border-color: red;
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8rem;
+    }
+    button {
+      outline: none;
+      background-color: crimson;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      padding: 14px;
+      margin-top: 20px;
+      transition: background-color ease-in-out 0.2s;
+      &:hover {
+        cursor: pointer;
+        background-color: lightcoral;
+      }
+      &[disabled] {
+        cursor: not-allowed;
+        background-color: gray;
+      }
+    }
+  }
+}

@@ -8,5 +8,5 @@ export interface PasswordFormErrors {
 }
 
 interface ControlValue {
-  value: string
+  message: string
 }

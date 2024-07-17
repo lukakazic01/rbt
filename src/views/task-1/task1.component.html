@@ -1,8 +1,10 @@
-<form (ngSubmit)="handleSubmit($event)" [formGroup]="passwordForm">
-  <label for="password">Password</label>
-  <input id="password" name="password" type="text" formControlName="password"  />
-  <div *ngIf="password?.invalid && (password?.dirty && password?.touched)">
-    length
-  </div>
-  <button type="submit" >Submit</button>
-</form>
+<div class="form-wrapper">
+  <form (ngSubmit)="handleSubmit($event)" [formGroup]="passwordForm" class="form">
+    <label for="password">Password validator</label>
+    <input id="password" name="password" type="text" formControlName="password" [ngClass]="{'error': password?.invalid && (password?.dirty && password?.touched)}"  />
+    <div *ngIf="password?.invalid && (password?.dirty && password?.touched)" class="error-message">
+      {{ getFirstError() }}
+    </div>
+    <button type="submit" [disabled]="!passwordForm.valid" >Submit</button>
+  </form>
+</div>
