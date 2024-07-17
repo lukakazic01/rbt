@@ -44,7 +44,7 @@ export class Task1Component {
     this.password?.updateValueAndValidity()
   }
 
-  getFirstError() {
+  getFirstError(): string | null {
     if(this.password?.errors) {
       const allErrors = Object.keys(this.password.errors);
       return this.password.getError(allErrors[0]).message;
