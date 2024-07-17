@@ -1,11 +1,19 @@
 <div class="blog-wrapper">
   <h1 class="main-title">Movies</h1>
-  <div *ngIf="filteredMovies()">
+  <div *ngIf="!isError() && filteredMovies(); else error">
     <app-task-3-categories (updateMovies)="handleMovieUpdate($event)" (resetFilters)="handleFilterResetting()" />
     <div class="all-movies" >
       <ng-container *ngFor="let movie of filteredMovies(); trackBy: trackByMovie">
         <app-task-3-movie-card [movie]="movie" />
       </ng-container>
     </div>
+  </div>
+  <ng-template #error>
+    <div class="error-wrapper" *ngIf="isError()">
+      <p>There was an error on the server, please try again</p>
+    </div>
+  </ng-template>
+  <div class="loader" *ngIf="isLoading()">
+    <app-loader [isLoading]="isLoading()" />
   </div>
 </div>

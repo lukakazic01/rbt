@@ -8,6 +8,16 @@
   }
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+}
+
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
 
 .all-movies {
   display: grid;
