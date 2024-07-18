@@ -13,7 +13,10 @@ export class Task3Service {
   constructor(private http: HttpClient) {
   }
 
-  getAllMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>('https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies');
+  private apiUrl = 'https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies';
+
+  getAllMovies(categoryId?: number): Observable<Movie[]> {
+    if (categoryId) return this.http.get<Movie[]>(this.apiUrl, { params: {categoryId} });
+    else return this.http.get<Movie[]>(this.apiUrl);
   }
 }

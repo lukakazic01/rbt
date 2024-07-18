@@ -28,9 +28,9 @@
         <button (click)="createNewComment()" [disabled]="!comment.valid">Add</button>
       </div>
     </div>
-<!--    <div class="iframe-wrapper">-->
-<!--      <iframe [src]="safeUrl"></iframe>-->
-<!--    </div>-->
+    <div class="iframe-wrapper">
+      <iframe [src]="safeUrl"></iframe>
+    </div>
   </div>
   <div class="loader" *ngIf="isLoading()">
     <app-loader [isLoading]="isLoading()" />

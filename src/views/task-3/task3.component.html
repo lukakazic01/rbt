@@ -1,9 +1,9 @@
 <div class="blog-wrapper">
   <h1 class="main-title">Movies</h1>
-  <div *ngIf="!isError() && filteredMovies() && !isLoading(); else error">
-    <app-task-3-categories (updateMovies)="handleMovieUpdate($event)" (resetFilters)="handleFilterResetting()" />
+  <div *ngIf="!isError() && movies() && !isLoading(); else error">
+    <app-task-3-categories (updateMovies)="handleMoviesUpdate($event)" (resetFilters)="handleFilterResetting()" />
     <div class="all-movies" >
-      <ng-container *ngFor="let movie of filteredMovies(); trackBy: trackByMovie">
+      <ng-container *ngFor="let movie of movies(); trackBy: trackByMovie">
         <app-task-3-movie-card [movie]="movie" />
       </ng-container>
     </div>
