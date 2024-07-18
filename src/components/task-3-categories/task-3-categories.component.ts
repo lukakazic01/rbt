@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from "@angular/core";
 import {Task3CategoriesService} from "./task-3-categories.service";
-import {Category} from "../../types/category";
+import {Category} from "../../types/Category";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";

@@ -22,5 +22,5 @@ export interface MovieComment {
 
 export interface MovieWithCommentsAndVideoId extends Movie {
   comments: MovieComment[] | null,
-  videoId: string
+  //videoId: string
 }

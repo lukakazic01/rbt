@@ -1,7 +1,7 @@
 <div class="single-whole-wrapper">
   <div *ngIf="singleMovie() && !isLoading()" class="single-movie-wrapper">
     <div class="single-movie">
-      <div class="image-wrapper">
+      <div class="card-wrapper">
         <img [src]="singleMovie()?.imageUrl" />
         <div class="image-wrapper-col-2">
           <p><b>Name:</b> {{singleMovie()?.name}}</p>
@@ -28,9 +28,9 @@
         <button (click)="createNewComment()" [disabled]="!comment.valid">Add</button>
       </div>
     </div>
-    <div class="iframe-wrapper">
-      <iframe [src]="safeUrl"></iframe>
-    </div>
+<!--    <div class="iframe-wrapper">-->
+<!--      <iframe [src]="safeUrl"></iframe>-->
+<!--    </div>-->
   </div>
   <div class="loader" *ngIf="isLoading()">
     <app-loader [isLoading]="isLoading()" />

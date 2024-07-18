@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {Movie} from "../../types/movie";
+import {Movie} from "../../types/Movie";
 import {RouterLink} from "@angular/router";
 
 

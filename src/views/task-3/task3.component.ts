@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, signal} from "@angular/core";
 import {Task3Service} from "./task3.service";
 import {CommonModule} from "@angular/common";
-import {Movie} from "../../types/movie";
+import {Movie} from "../../types/Movie";
 import {Task3MovieCardComponent} from "../../components/task-3-movie-card/task-3-movie-card.component";
 import {Task3CategoriesComponent} from "../../components/task-3-categories/task-3-categories.component";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";

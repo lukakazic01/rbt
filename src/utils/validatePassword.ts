@@ -1,5 +1,5 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
-import {PasswordFormErrors} from "../types/passwordFormErrors";
+import {PasswordFormErrors} from "../types/PasswordFormErrors";
 
 export function validatePassword(
   specialCharsRegex: RegExp,
