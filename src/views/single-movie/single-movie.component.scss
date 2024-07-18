@@ -8,7 +8,8 @@
 }
 .single-movie-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .comments-title {
     text-align: center;
@@ -75,4 +76,9 @@
     flex-direction: column;
     row-gap: 20px
   }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
 }

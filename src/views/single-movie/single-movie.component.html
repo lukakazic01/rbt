@@ -1,5 +1,5 @@
 <div class="single-whole-wrapper">
-  <div *ngIf="singleMovie()" class="single-movie-wrapper">
+  <div *ngIf="singleMovie() && !isLoading()" class="single-movie-wrapper">
     <div class="single-movie">
       <div class="image-wrapper">
         <img [src]="singleMovie()?.imageUrl" />
@@ -10,17 +10,25 @@
       </div>
       <h1 class="comments-title">Comments:</h1>
       <div class="comments">
-        <ng-container *ngFor="let comment of singleMovie()?.comments">
-          <p *ngIf="comment.comment || comment.Comment">{{comment.comment || comment.Comment}}</p>
+        <ng-container *ngIf="singleMovie()?.comments; else errorComments">
+          <ng-container *ngFor="let comment of singleMovie()?.comments">
+            <p *ngIf="comment.comment || comment.Comment">{{comment.comment || comment.Comment}}</p>
+          </ng-container>
         </ng-container>
+        <ng-template #errorComments>
+          <p>There are no comments for this movie</p>
+        </ng-template>
       </div>
       <div class="add-comment">
         <p>Add comment:</p>
         <textarea placeholder="Add comment" class="add-comment-box"></textarea>
       </div>
     </div>
+<!--    <div class="iframe-wrapper">-->
+<!--      <iframe [src]="safeUrl"></iframe>-->
+<!--    </div>-->
   </div>
-  <div class="iframe-wrapper">
-    <iframe [src]="safeUrl"></iframe>
+  <div class="loader" *ngIf="isLoading()">
+    <app-loader [isLoading]="isLoading()" />
   </div>
 </div>
