@@ -1,0 +1,20 @@
+@mixin primary-btn {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  background-color: crimson;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color ease-in-out 0.2s;
+  &:hover {
+    cursor: pointer;
+    background-color: lightcoral;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #D2D2D2;
+  }
+}

@@ -28,4 +28,8 @@ export class SingleMovieService {
     const url = `${apiUrl}?&q=${searchQuery}&key=${apiKey}&type=video`;
     return this.http.get<Video>(url);
   }
+
+  postComment(movieId: number, comment: { comment: string }): Observable<MovieComment> {
+    return this.http.post<MovieComment>(`https://5fe8885b2e12ee0017ab47c0.mockapi.io/api/v1/movies/${movieId}/comments`, comment)
+  }
 }

@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import {catchError, forkJoin, map, of} from "rxjs";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {LoaderComponent} from "../../components/loader/loader.component";
+import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {LoaderComponent} from "../../components/loader/loader.component";
   templateUrl: 'single-movie.component.html',
   styleUrls: ['single-movie.component.scss'],
   standalone: true,
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule, LoaderComponent, ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -24,12 +25,14 @@ export class SingleMovieComponent implements OnInit{
               private activatedRoute: ActivatedRoute,
               private sanitizer: DomSanitizer) {}
 
-  movieId: number = this.activatedRoute.snapshot.params['id']
   destroy = inject(DestroyRef)
-  singleMovie = signal<MovieWithCommentsAndVideoId | null>(null)
+  comment = new FormControl('', { nonNullable: true, validators: Validators.required });
+  movieId: number = this.activatedRoute.snapshot.params['id']
   imdbId: string = this.activatedRoute.snapshot.queryParams['imdbId']
-  safeUrl: SafeResourceUrl = ''
+  singleMovie = signal<MovieWithCommentsAndVideoId | null>(null)
   isLoading = signal(false)
+  safeUrl: SafeResourceUrl = ''
+
   ngOnInit() {
     //const $getTrailer = this.singleMovieService.getMovieTrailers(this.imdbId);
     const $singleMovie = this.singleMovieService.getSingleMovie(this.movieId)
@@ -56,5 +59,29 @@ export class SingleMovieComponent implements OnInit{
         this.isLoading.set(false)
       }
     });
+  }
+
+  get isCommentControlInErrorState() {
+    return this.comment.hasError('required') && (this.comment.touched || this.comment.dirty)
+  }
+  createNewComment() {
+    this.comment.markAsDirty()
+    this.comment.markAsTouched()
+    this.comment.updateValueAndValidity()
+    if(this.comment.valid) {
+      this.singleMovieService.postComment(this.movieId, { comment: this.comment.value })
+        .pipe(takeUntilDestroyed(this.destroy))
+        .subscribe({
+        next: (res) => {
+          this.singleMovie.update((movie) => {
+            if(movie) {
+              if(movie.comments) return {...movie, comments: [...movie?.comments, res]}
+              else return {...movie, comments: [res]}
+            } else return movie;
+          })
+          this.comment.reset();
+        }
+      })
+    }
   }
 }

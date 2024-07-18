@@ -1,3 +1,5 @@
+@import "../../mixins";
+
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -27,22 +29,7 @@
       font-size: 0.8rem;
     }
     button {
-      outline: none;
-      background-color: crimson;
-      border: none;
-      color: white;
-      border-radius: 4px;
-      padding: 14px;
-      margin-top: 20px;
-      transition: background-color ease-in-out 0.2s;
-      &:hover {
-        cursor: pointer;
-        background-color: lightcoral;
-      }
-      &[disabled] {
-        cursor: not-allowed;
-        background-color: gray;
-      }
+      @include primary-btn
     }
   }
 }
