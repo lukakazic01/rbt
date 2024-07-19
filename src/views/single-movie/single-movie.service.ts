@@ -23,7 +23,7 @@ export class SingleMovieService {
 
   getMovieTrailers(imdbId: string): Observable<Video> {
     const searchQuery = `${imdbId} trailer`;
-    const apiKey = 'AIzaSyArPWqvqksPpgKe-tHO5zjwRwzO9Tv_fdQ'
+    const apiKey = 'AIzaSyArPWqvqksPpgKe-tHO5zjwRwzO9Tv_fdQ' // This should be inside .env file too
     const apiUrl = 'https://www.googleapis.com/youtube/v3/search';
     const url = `${apiUrl}?&q=${searchQuery}&key=${apiKey}&type=video`;
     return this.http.get<Video>(url);

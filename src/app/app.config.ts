@@ -11,8 +11,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideAuth0({
-      domain: 'dev-8w0glb2ko7reuap1.us.auth0.com',
-      clientId: '38Gs3AoYOibOYcyltSljWuhOCX7KcSTb',
+      domain: 'dev-8w0glb2ko7reuap1.us.auth0.com', // This should be inside .env file, but for the simplicity i put it here
+      clientId: '38Gs3AoYOibOYcyltSljWuhOCX7KcSTb', // This should be inside .env as well
       authorizationParams: {
         redirect_uri: window.location.origin
       }

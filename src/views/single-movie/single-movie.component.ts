@@ -38,25 +38,25 @@ export class SingleMovieComponent implements OnInit{
   safeUrl: SafeResourceUrl = ''
 
   ngOnInit() {
-    //const $getTrailer = this.singleMovieService.getMovieTrailers(this.imdbId);
+    const $getTrailer = this.singleMovieService.getMovieTrailers(this.imdbId);
     const $singleMovie = this.singleMovieService.getSingleMovie(this.movieId)
     const $commentForSingleMovie = this.singleMovieService.getCommentsForSingleMovie(this.movieId).pipe(catchError(() => of(null)))
     this.isLoading.set(true)
-    forkJoin<[Movie, MovieComment[] | null, /*Video*/]>([$singleMovie, $commentForSingleMovie, /*$getTrailer*/])
+    forkJoin<[Movie, MovieComment[] | null, Video]>([$singleMovie, $commentForSingleMovie, $getTrailer])
       .pipe(
         takeUntilDestroyed(this.destroy),
-        map((res: [Movie, MovieComment[] | null, /*Video*/]): MovieWithCommentsAndVideoId => {
+        map((res: [Movie, MovieComment[] | null, Video]): MovieWithCommentsAndVideoId => {
           return {
             ...res[0],
             comments: res[1],
-            //videoId: res[2].items[0].id.videoId
+            videoId: res[2].items[0].id.videoId
           }
         })
       ).subscribe({
       next: (res) => {
         this.singleMovie.set(res)
-        // const sanitizedUrl = this.sanitizer.sanitize(SecurityContext.URL, `https://www.youtube.com/embed/${res.videoId}`);
-        // if(sanitizedUrl) this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(sanitizedUrl)
+        const sanitizedUrl = this.sanitizer.sanitize(SecurityContext.URL, `https://www.youtube.com/embed/${res.videoId}`);
+        if(sanitizedUrl) this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(sanitizedUrl)
         this.isLoading.set(false)
       },
       error: (err) => {
