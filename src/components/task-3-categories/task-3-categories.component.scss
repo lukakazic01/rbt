@@ -1,0 +1,18 @@
+@import '../../mixins';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 300px;
+  margin: 20px 0;
+
+  select {
+    padding: 8px;
+    outline: none;
+    border: 1px solid #D2D2D2;
+  }
+  >button {
+    @include primary-btn;
+  }
+}

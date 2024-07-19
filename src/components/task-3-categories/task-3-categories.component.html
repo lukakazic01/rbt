@@ -1,4 +1,4 @@
-<div *ngIf="$categories | async as categories">
+<div *ngIf="$categories | async as categories" class="categories">
   <select [(ngModel)]="category" (change)="handleCategoryChange()" >
     <option disabled selected>Select Category</option>
     <ng-container *ngFor="let option of categories; trackBy: trackByCategory">
