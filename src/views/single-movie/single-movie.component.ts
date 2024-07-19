@@ -31,9 +31,9 @@ export class SingleMovieComponent implements OnInit{
   comment = new FormControl('', { nonNullable: true, validators: Validators.required });
   movieId: number = this.activatedRoute.snapshot.params['id']
   imdbId: string = this.activatedRoute.snapshot.queryParams['imdbId']
+  safeUrl: SafeResourceUrl = ''
   singleMovie = signal<MovieWithCommentsAndVideoId | null>(null)
   isLoading = signal(false)
-  safeUrl: SafeResourceUrl = ''
 
   ngOnInit() {
     const $getTrailer = this.singleMovieService.getMovieTrailers(this.imdbId);
@@ -54,7 +54,7 @@ export class SingleMovieComponent implements OnInit{
       next: (res) => {
         this.singleMovie.set(res)
         const sanitizedUrl = this.sanitizer.sanitize(SecurityContext.URL, `https://www.youtube.com/embed/${res.videoId}`);
-        if(sanitizedUrl) this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(sanitizedUrl)
+        if (sanitizedUrl) this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(sanitizedUrl)
         this.isLoading.set(false)
       },
       error: (err) => {
