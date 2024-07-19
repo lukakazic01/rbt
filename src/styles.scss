@@ -66,6 +66,11 @@ html, body {
 
           li {
             font-weight: 500;
+
+            span {
+              position: relative;
+              left: -10px
+            }
           }
         }
 
@@ -135,6 +140,14 @@ html, body {
 
 .nested-ul {
   margin: 5px 0;
-  padding-left: 40px;
+  padding-left: 30px;
   list-style-position: inside;
+
+  li {
+    font-weight: 500;
+    span {
+      position: relative;
+      left: -10px;
+    }
+  }
 }
