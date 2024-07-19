@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {Task3CategoriesService} from "./task-3-categories.service";
 import {Category} from "../../types/Category";
 import {CommonModule} from "@angular/common";
@@ -15,7 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class Task3CategoriesComponent {
+export class Task3CategoriesComponent implements OnInit{
 
   constructor(private task3CategoriesService: Task3CategoriesService,
               private activatedRoute: ActivatedRoute,
@@ -27,6 +27,13 @@ export class Task3CategoriesComponent {
   categoryIdQueryParams = this.activatedRoute.snapshot.queryParams['categoryId']
   @Output() updateMovies: EventEmitter<number> = new EventEmitter<number>();
   @Output() resetFilters: EventEmitter<null> = new EventEmitter<null>();
+
+  ngOnInit() {
+    if (this.categoryIdQueryParams) {
+      this.category = this.categoryIdQueryParams
+    }
+  }
+
   trackByCategory(index: number, category: Category) {
     return category.id
   }

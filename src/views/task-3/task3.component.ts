@@ -30,8 +30,13 @@ export class Task3Component implements OnInit{
   isError = signal(false)
 
   ngOnInit() {
-    this.isLoading .set(true)
-    this.fetchMovies()
+    this.isLoading.set(true)
+    const { queryParams } = this.activatedRoute.snapshot
+    if(queryParams['categoryId']) {
+      this.fetchMovies(queryParams['categoryId'])
+    } else {
+      this.fetchMovies();
+    }
   }
 
   /*

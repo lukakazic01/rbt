@@ -1,0 +1,6 @@
+<ng-container *ngIf="authService.isAuthenticated$ | async; else notAuthenticated">
+  <ng-content></ng-content>
+</ng-container>
+<ng-template #notAuthenticated>
+  <ng-content select="notAuthenticated"></ng-content>
+</ng-template>

@@ -1,0 +1,29 @@
+nav {
+  background-color: crimson;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    li{
+      padding: 16px;
+      color: white;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .auth-wrapper {
+    display: flex;
+    column-gap: 10px;
+  }
+}

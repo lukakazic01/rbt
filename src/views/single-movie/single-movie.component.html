@@ -21,11 +21,16 @@
       </div>
       <div class="add-comment">
         <p>Add comment:</p>
-        <textarea placeholder="Add comment" class="add-comment-box" [ngClass]="{ 'error-box': isCommentControlInErrorState }" [formControl]="comment"></textarea>
-        <p class="error-comment" *ngIf="isCommentControlInErrorState">
-          Comment is required
-        </p>
-        <button (click)="createNewComment()" [disabled]="!comment.valid">Add</button>
+        <app-auth-only>
+          <ng-container>
+            <textarea placeholder="Add comment" class="add-comment-box" [ngClass]="{ 'error-box': isCommentControlInErrorState }" [formControl]="comment"></textarea>
+            <p class="error-comment" *ngIf="isCommentControlInErrorState">
+              Comment is required
+            </p>
+            <button (click)="createNewComment()" [disabled]="!comment.valid" class="add-button">Add</button>
+          </ng-container>
+          <p ngProjectAs="notAuthenticated" class="not-authenticated">To add a comment, you must log in first</p>
+        </app-auth-only>
       </div>
     </div>
 <!--    <div class="iframe-wrapper">-->

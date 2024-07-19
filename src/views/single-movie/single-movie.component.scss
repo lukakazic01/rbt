@@ -47,15 +47,19 @@
         border-color: red;
       }
     }
-
     .error-comment {
       color: red;
       font-size: 0.8rem;
       margin-top: 5px
     }
 
-    > button {
+    .add-button {
       @include primary-btn;
+    }
+
+    .not-authenticated {
+      font-weight: 600;
+      margin-top: 10px;
     }
   }
 

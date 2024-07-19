@@ -9,6 +9,8 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {LoaderComponent} from "../../components/loader/loader.component";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Video} from "../../types/Video";
+import {AuthService} from "@auth0/auth0-angular";
+import {AuthOnlyComponent} from "../../components/auth-only/auth-only.component";
 
 
 @Component({
@@ -16,7 +18,7 @@ import {Video} from "../../types/Video";
   templateUrl: 'single-movie.component.html',
   styleUrls: ['single-movie.component.scss'],
   standalone: true,
-  imports: [CommonModule, LoaderComponent, ReactiveFormsModule],
+  imports: [CommonModule, LoaderComponent, ReactiveFormsModule, AuthOnlyComponent],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -24,7 +26,8 @@ export class SingleMovieComponent implements OnInit{
 
   constructor(private singleMovieService: SingleMovieService,
               private activatedRoute: ActivatedRoute,
-              private sanitizer: DomSanitizer) {}
+              private sanitizer: DomSanitizer,
+              public authService: AuthService) {}
 
   destroy = inject(DestroyRef)
   comment = new FormControl('', { nonNullable: true, validators: Validators.required });
