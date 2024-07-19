@@ -16,3 +16,10 @@
     @include primary-btn;
   }
 }
+
+@media screen and (max-width: 500px)
+{
+  .categories {
+    width: 100%;
+  }
+}

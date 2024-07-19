@@ -45,4 +45,11 @@
   .all-movies {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  .categories-wrapper {
+    justify-content: normal;
+    width: 100%;
+  }
+  .task-3-component {
+    width: 100%;
+  }
 }

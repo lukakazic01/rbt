@@ -2,7 +2,7 @@
   <h1 class="main-title">Movies</h1>
   <div *ngIf="!isError() && movies() && !isLoading(); else error">
     <div class="categories-wrapper">
-      <app-task-3-categories (updateMovies)="handleMoviesUpdate($event)" (resetFilters)="handleFilterResetting()" />
+      <app-task-3-categories (updateMovies)="handleMoviesUpdate($event)" (resetFilters)="handleFilterResetting()" class="task-3-component" />
     </div>
     <div class="all-movies" >
       <ng-container *ngFor="let movie of movies(); trackBy: trackByMovie">
