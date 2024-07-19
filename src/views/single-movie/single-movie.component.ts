@@ -63,6 +63,10 @@ export class SingleMovieComponent implements OnInit{
     });
   }
 
+  trackByCommentId(index: number, comment: MovieComment) {
+    return parseInt(comment.id)
+  }
+
   get isCommentControlInErrorState() {
     return this.comment.hasError('required') && (this.comment.touched || this.comment.dirty)
   }
